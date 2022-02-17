@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/comp426-2022-spring/a03-franqfzh#readme",
   "dependencies": {
-    "express" :"^4.17.2",
-    "yargs" :"^17.3.1"
+    "express": "^4.17.3",
+    "yargs": "^17.3.1"
   }
 }
