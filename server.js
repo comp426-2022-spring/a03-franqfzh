@@ -40,10 +40,7 @@ app.get('/app/', (req, res) => {
 // })
 
 
-app.use(function(req, res){
-    res.status(404).send('404 NOT FOUND')
-    res.type("text/plain")
-})
+
 
 
 app.get('/app/flips/:number',(req, res) => {
@@ -64,5 +61,8 @@ app.get('/app/flip/call/tails',(req, res) => {
 })
 
 
-
+app.use(function(req, res){
+    res.status(404).send('404 NOT FOUND')
+    res.type("text/plain")
+})
 
