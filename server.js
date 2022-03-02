@@ -22,8 +22,11 @@ app.get('/app/flip', (req, res) => {
 
 
 app.get('/app', (req, res) => {
-    res.status(200).end('OK')
-    res.type('text/plain')
+    res.statusCode = 200;
+    // Respond with status message "OK"
+    res.statusMessage = 'OK';
+    res.writeHead(res.statusCode, { 'Content-Type': 'text/plain' });
+    res.end(res.statusCode+ ' ' +res.statusMessage)
 })
 
 // app.get('/app/echo/:number',express(json), (req, res) => {
@@ -34,14 +37,12 @@ app.get('/app', (req, res) => {
 //     res.status(200).json({ 'message': req.query.number})
 // })
 
+
 app.use(function(req, res){
-    res.status(404).send("Endpoint does not exist")
+    res.status(404).send('404 NOT FOUND')
     res.type("text/plain")
 })
 
-app.get('/app/flip',(req, res) => {
-    res.status(200).json({ 'flip': coinFlip()})
-})
 
 app.get('/app/flips/:number',(req, res) => {
     var result = coinFlips(req.params.number)
