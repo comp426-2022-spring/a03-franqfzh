@@ -26,13 +26,13 @@ app.get('/app', (req, res) => {
     res.type('text/plain')
 })
 
-app.get('/app/echo/:number',express(json), (req, res) => {
-    res.status(200).json({'message': req.params.number})
-})
+// app.get('/app/echo/:number',express(json), (req, res) => {
+//     res.status(200).json({'message': req.params.number})
+// })
 
-app.get('/app/echo/',logging, (req, res) => {
-    res.status(200).json({ 'message': req.query.number})
-})
+// app.get('/app/echo/',logging, (req, res) => {
+//     res.status(200).json({ 'message': req.query.number})
+// })
 
 app.use(function(req, res){
     res.status(404).send("Endpoint does not exist")
