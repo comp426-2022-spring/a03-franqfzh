@@ -4,7 +4,7 @@
   "description": "build api to flip coin",
   "main": "server.js",
   "scripts": {
-    "test": "node server.js --port=5555"
+    "test": "node server.js --port=5000"
   },
   "repository": {
     "type": "git",
