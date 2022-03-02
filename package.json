@@ -1,6 +1,7 @@
 {
   "name": "a03-franqfzh",
   "version": "0.1.0",
+  "type": "module",
   "description": "build api to flip coin",
   "main": "server.js",
   "scripts": {

@@ -1,8 +1,6 @@
+import minimist from "minimist";
 import express from "express";
 
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url)
-const express = require('express')
 const app = express()
 
 // app.use(express.json())
@@ -10,7 +8,6 @@ const app = express()
 
 
 const args = minimist(process.argv.slice(2));
-const app = express()
 const port = args.port || process.env.PORT || 5000;
 
 
