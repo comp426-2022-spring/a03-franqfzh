@@ -64,7 +64,7 @@ app.get('/app/flip/call/tails',(req, res) => {
 
 
 //functions
-export function coinFlips(number) {
+function coinFlips(number) {
     let results = [];
     for (let i = 0; i < number; i++) {
       results[i] = coinFlip();
@@ -73,46 +73,46 @@ export function coinFlips(number) {
     
   }
 
-  export function coinFlip() {
+function coinFlip() {
     return Math.random() > 0.5 ? 'heads' : 'tails';
-  }
+}
 
-  export function countFlips(array) {
+function countFlips(array) {
     let num_heads = 0;
     let num_tails = 0;
-  
+
     for(let i = 0; i < array.length; i++) {
-      if (array[i] == "heads"){
+    if (array[i] == "heads"){
         num_heads++;
-      } else {
+    } else {
         num_tails++;
-      }
+    }
     }
     if (num_heads==0 && num_tails!=0){
-      return {tails: num_tails}
+    return {tails: num_tails}
     } else if (num_heads!=0 && num_tails==0){
-      return {heads: num_heads}
+    return {heads: num_heads}
     } else {
     return {
-      heads: num_heads,
-      tails: num_tails
+    heads: num_heads,
+    tails: num_tails
     }
-  }
-  }
+}
+}
 
-  export function flipACoin(call) {
+function flipACoin(call) {
     let flip = coinFlip();
     let result;
-  
-      if (call == flip) {
+
+    if (call == flip) {
         result = "win";
-      } else {
+    } else {
         result = "lose";
-      }
-      return {
+    }
+    return {
         call,
         flip,
         result
-      }
+    }
     
-  }
+}
