@@ -1,5 +1,6 @@
 import minimist from "minimist";
 import express from "express";
+import { coinFlip, coinFlips, countFlips, flipACoin } from './coin.mjs'
 
 const app = express()
 
@@ -65,56 +66,3 @@ app.get('/app/flip/call/tails',(req, res) => {
 
 
 
-//functions
-function coinFlips(number) {
-    let results = [];
-    for (let i = 0; i < number; i++) {
-      results[i] = coinFlip();
-    }
-    return results
-    
-  }
-
-function coinFlip() {
-    return Math.random() > 0.5 ? 'heads' : 'tails';
-}
-
-function countFlips(array) {
-    let num_heads = 0;
-    let num_tails = 0;
-
-    for(let i = 0; i < array.length; i++) {
-    if (array[i] == "heads"){
-        num_heads++;
-    } else {
-        num_tails++;
-    }
-    }
-    if (num_heads==0 && num_tails!=0){
-    return {tails: num_tails}
-    } else if (num_heads!=0 && num_tails==0){
-    return {heads: num_heads}
-    } else {
-    return {
-    heads: num_heads,
-    tails: num_tails
-    }
-}
-}
-
-function flipACoin(call) {
-    let flip = coinFlip();
-    let result;
-
-    if (call == flip) {
-        result = "win";
-    } else {
-        result = "lose";
-    }
-    return {
-        call,
-        flip,
-        result
-    }
-    
-}
