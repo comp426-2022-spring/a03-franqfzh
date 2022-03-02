@@ -4,8 +4,6 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-import {coinFlip, coinFlips, countFlips, flipACoin} from './coin.mjs'
-
 const logging = (req, res, next) => {
     console.log(req.body.number)
     next()
@@ -61,3 +59,60 @@ app.get('/app/flip/call/heads',(req, res) => {
 app.get('/app/flip/call/tails',(req, res) => {
     res.status(200).json(flipACoin(TAILS))
 })
+
+
+
+
+//functions
+export function coinFlips(number) {
+    let results = [];
+    for (let i = 0; i < number; i++) {
+      results[i] = coinFlip();
+    }
+    return results
+    
+  }
+
+  export function coinFlip() {
+    return Math.random() > 0.5 ? 'heads' : 'tails';
+  }
+
+  export function countFlips(array) {
+    let num_heads = 0;
+    let num_tails = 0;
+  
+    for(let i = 0; i < array.length; i++) {
+      if (array[i] == "heads"){
+        num_heads++;
+      } else {
+        num_tails++;
+      }
+    }
+    if (num_heads==0 && num_tails!=0){
+      return {tails: num_tails}
+    } else if (num_heads!=0 && num_tails==0){
+      return {heads: num_heads}
+    } else {
+    return {
+      heads: num_heads,
+      tails: num_tails
+    }
+  }
+  }
+
+  export function flipACoin(call) {
+    let flip = coinFlip();
+    let result;
+  
+      if (call == flip) {
+        result = "win";
+      } else {
+        result = "lose";
+      }
+      return {
+        call,
+        flip,
+        result
+      }
+    
+  }
