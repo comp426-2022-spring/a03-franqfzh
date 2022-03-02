@@ -1,27 +1,30 @@
+import minimist from "minimist";
+import express from "express";
+
 const express = require('express')
 const app = express()
 
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+// app.use(express.json())
+// app.use(express.urlencoded({extended:true}))
 
-const logging = (req, res, next) => {
-    console.log(req.body.number)
-    next()
-}
 
-var port = 4000
+const args = minimist(process.argv.slice(2));
+const app = express()
+const port = args.port || process.env.PORT || 5000;
+
+
 
 const server = app.listen(port, () => {
     console.log('App is running on port %PORT%'.replace('%PORT%', port));
 })
 
 app.get('/app/flip', (req, res) => {
-    var flip = coinflip()
+    var flip = coinFlip()
     res.status(200).json({'flip': flip})
 })
 
 
-app.get('/app', (req, res) => {
+app.get('/app/', (req, res) => {
     res.statusCode = 200;
     // Respond with status message "OK"
     res.statusMessage = 'OK';
