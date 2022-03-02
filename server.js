@@ -53,11 +53,11 @@ app.get('/app/flips/:number',(req, res) => {
 })
 
 app.get('/app/flip/call/heads',(req, res) => {
-    res.status(200).json(flipACoin(HEADS))
+    res.status(200).json(flipACoin('heads'))
 })
 
 app.get('/app/flip/call/tails',(req, res) => {
-    res.status(200).json(flipACoin(TAILS))
+    res.status(200).json(flipACoin('tails'))
 })
 
 
